@@ -1,25 +1,17 @@
 """
 Financial Reports Parser Module
 Parses PDF financial reports (10-K, 10-Q, etc.) using PyMuPDF.
-<<<<<<< HEAD
 Supports both basic paragraph chunking and LangChain RecursiveCharacterTextSplitter.
 """
 
 import logging
-=======
-"""
-
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 import fitz  # PyMuPDF
 import re
 from typing import Dict, List
 from pathlib import Path
 
-<<<<<<< HEAD
 logger = logging.getLogger(__name__)
 
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 
 def parse_pdf_report(pdf_path: str) -> Dict:
     """
@@ -68,11 +60,7 @@ def parse_pdf_report(pdf_path: str) -> Dict:
         return parsed_data
         
     except Exception as e:
-<<<<<<< HEAD
         logger.error("Error parsing PDF %s: %s", pdf_path, e)
-=======
-        print(f"Error parsing PDF {pdf_path}: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
         return {}
 
 
@@ -212,29 +200,19 @@ def extract_risk_factors(text: str) -> List[str]:
     return risk_factors[:20]  # Limit to top 20 risk factors
 
 
-<<<<<<< HEAD
 def chunk_report(report_data: Dict, chunk_size: int = 512, chunk_overlap: int = 128) -> List[Dict]:
     """
     Split report into overlapping chunks using LangChain's RecursiveCharacterTextSplitter.
     Falls back to basic paragraph splitting if LangChain is not available.
-=======
-def chunk_report(report_data: Dict, chunk_size: int = 1000) -> List[Dict]:
-    """
-    Split report into smaller chunks for processing.
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     
     Args:
         report_data: Parsed report data
         chunk_size: Maximum chunk size in characters
-<<<<<<< HEAD
         chunk_overlap: Number of overlapping characters between chunks
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     
     Returns:
         List of report chunks with metadata
     """
-<<<<<<< HEAD
     text = report_data['full_text']
 
     try:
@@ -274,46 +252,6 @@ def chunk_report(report_data: Dict, chunk_size: int = 1000) -> List[Dict]:
         })
 
     logger.info("Chunked report into %d pieces (size=%d, overlap=%d)", len(chunks), chunk_size, chunk_overlap)
-=======
-    chunks = []
-    text = report_data['full_text']
-    
-    # Split by paragraphs first
-    paragraphs = text.split('\n\n')
-    
-    current_chunk = ""
-    chunk_id = 0
-    
-    for paragraph in paragraphs:
-        paragraph = paragraph.strip()
-        if not paragraph:
-            continue
-            
-        # If adding this paragraph would exceed chunk size, save current chunk
-        if len(current_chunk) + len(paragraph) > chunk_size and current_chunk:
-            chunks.append({
-                'chunk_id': chunk_id,
-                'text': current_chunk.strip(),
-                'file_path': report_data['file_path'],
-                'chunk_type': 'financial_report',
-                'metadata': report_data['metadata']
-            })
-            chunk_id += 1
-            current_chunk = paragraph
-        else:
-            current_chunk += "\n\n" + paragraph if current_chunk else paragraph
-    
-    # Add the last chunk
-    if current_chunk:
-        chunks.append({
-            'chunk_id': chunk_id,
-            'text': current_chunk.strip(),
-            'file_path': report_data['file_path'],
-            'chunk_type': 'financial_report',
-            'metadata': report_data['metadata']
-        })
-    
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     return chunks
 
 
@@ -333,11 +271,7 @@ def parse_multiple_reports(directory_path: str) -> List[Dict]:
     parsed_reports = []
     
     for pdf_file in pdf_files:
-<<<<<<< HEAD
         logger.info("Parsing %s...", pdf_file.name)
-=======
-        print(f"Parsing {pdf_file.name}...")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
         report_data = parse_pdf_report(str(pdf_file))
         if report_data:
             parsed_reports.append(report_data)

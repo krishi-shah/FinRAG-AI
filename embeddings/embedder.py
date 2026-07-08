@@ -1,21 +1,15 @@
 """
 Embeddings Module
 Converts text into embeddings using sentence-transformers for vector search.
-<<<<<<< HEAD
 Supports multiple models including domain-specific financial embeddings.
 """
 
 import logging
-=======
-"""
-
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 import numpy as np
 import json
 from typing import List, Dict
 import os
 
-<<<<<<< HEAD
 logger = logging.getLogger(__name__)
 
 try:
@@ -30,24 +24,11 @@ SUPPORTED_MODELS = {
     "all-mpnet-base-v2": {"dim": 768, "description": "Higher quality, slower"},
 }
 
-=======
-# Handle Keras compatibility issue
-try:
-    from sentence_transformers import SentenceTransformer
-except ImportError as e:
-    print(f"Warning: sentence-transformers import failed: {e}")
-    print("Please install tf-keras with: pip install tf-keras")
-    SentenceTransformer = None
-
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 
 class FinancialEmbedder:
     """
     Handles text embedding generation for financial documents.
-<<<<<<< HEAD
     Supports multiple embedding models including FinBERT for domain-specific encoding.
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     """
     
     def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
@@ -55,7 +36,6 @@ class FinancialEmbedder:
         Initialize the embedder with a sentence transformer model.
         
         Args:
-<<<<<<< HEAD
             model_name: Name of the sentence transformer model to use.
                         Options: "all-MiniLM-L6-v2", "ProsusAI/finbert", "all-mpnet-base-v2"
         """
@@ -65,15 +45,6 @@ class FinancialEmbedder:
         self.model = SentenceTransformer(model_name)
         self.embeddings_cache = {}
         logger.info("Embedder initialized: model=%s, dim=%d", model_name, self.model.get_sentence_embedding_dimension())
-=======
-            model_name: Name of the sentence transformer model to use
-        """
-        self.model_name = model_name
-        if SentenceTransformer is None:
-            raise ImportError("sentence-transformers not available. Please install tf-keras with: pip install tf-keras")
-        self.model = SentenceTransformer(model_name)
-        self.embeddings_cache = {}
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
         
     def generate_embedding(self, text: str) -> np.ndarray:
         """
@@ -147,11 +118,7 @@ class FinancialEmbedder:
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(embedded_chunks, f, indent=2, ensure_ascii=False)
         
-<<<<<<< HEAD
         logger.info("Saved %d embeddings to %s", len(embedded_chunks), file_path)
-=======
-        print(f"Saved {len(embedded_chunks)} embeddings to {file_path}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     
     def load_embeddings(self, file_path: str) -> List[Dict]:
         """
@@ -167,7 +134,6 @@ class FinancialEmbedder:
             with open(file_path, 'r', encoding='utf-8') as f:
                 embedded_chunks = json.load(f)
             
-<<<<<<< HEAD
             logger.info("Loaded %d embeddings from %s", len(embedded_chunks), file_path)
             return embedded_chunks
             
@@ -176,16 +142,6 @@ class FinancialEmbedder:
             return []
         except Exception as e:
             logger.error("Error loading embeddings: %s", e)
-=======
-            print(f"Loaded {len(embedded_chunks)} embeddings from {file_path}")
-            return embedded_chunks
-            
-        except FileNotFoundError:
-            print(f"Embeddings file {file_path} not found")
-            return []
-        except Exception as e:
-            print(f"Error loading embeddings: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             return []
     
     def compute_similarity(self, embedding1: np.ndarray, embedding2: np.ndarray) -> float:
@@ -251,31 +207,15 @@ def create_financial_embeddings(data_sources: List[Dict],
         data_sources: List of data source dictionaries
         output_path: Path to save the embeddings
     """
-<<<<<<< HEAD
     embedder = FinancialEmbedder()
     
-=======
-    # Initialize embedder
-    embedder = FinancialEmbedder()
-    
-    # Combine all chunks
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     all_chunks = []
     for source in data_sources:
         if 'chunks' in source:
             all_chunks.extend(source['chunks'])
     
-<<<<<<< HEAD
     logger.info("Creating embeddings for %d chunks...", len(all_chunks))
     embedded_chunks = embedder.embed_document_chunks(all_chunks)
-=======
-    print(f"Creating embeddings for {len(all_chunks)} chunks...")
-    
-    # Generate embeddings
-    embedded_chunks = embedder.embed_document_chunks(all_chunks)
-    
-    # Save embeddings
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     embedder.save_embeddings(embedded_chunks, output_path)
     
     return embedded_chunks

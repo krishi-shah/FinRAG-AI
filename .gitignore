@@ -27,7 +27,6 @@ build/
 # FAISS index files (generated at runtime)
 *.index
 *_chunks.json
-<<<<<<< HEAD
 data/index/
 
 # Coverage
@@ -36,8 +35,6 @@ htmlcov/
 
 # Ruff
 .ruff_cache/
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 
 # IDE
 .idea/

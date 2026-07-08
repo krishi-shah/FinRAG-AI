@@ -1,26 +1,17 @@
 """
 Sentiment Analysis Module
-<<<<<<< HEAD
 Analyzes financial text sentiment using FinBERT (ProsusAI/finbert).
 """
 
 import logging
-=======
-Analyzes financial text sentiment using FinBERT and other models.
-"""
-
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import numpy as np
 from typing import List, Dict, Union
 import re
 
-<<<<<<< HEAD
 logger = logging.getLogger(__name__)
 
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 
 class FinancialSentimentAnalyzer:
     """
@@ -43,7 +34,6 @@ class FinancialSentimentAnalyzer:
         self._load_model()
     
     def _load_model(self):
-<<<<<<< HEAD
         """Load the pre-trained model and tokenizer."""
         try:
             logger.info("Loading %s...", self.model_name)
@@ -53,20 +43,6 @@ class FinancialSentimentAnalyzer:
             logger.info("Model loaded on %s", self.device)
         except Exception as e:
             logger.warning("Failed to load %s: %s. Using keyword fallback.", self.model_name, e)
-=======
-        """
-        Load the pre-trained model and tokenizer.
-        """
-        try:
-            print(f"Loading {self.model_name}...")
-            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-            self.model = AutoModelForSequenceClassification.from_pretrained(self.model_name)
-            self.model.to(self.device)
-            print(f"Model loaded successfully on {self.device}")
-        except Exception as e:
-            print(f"Error loading model {self.model_name}: {e}")
-            print("Falling back to basic sentiment analysis")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             self.model = None
             self.tokenizer = None
     

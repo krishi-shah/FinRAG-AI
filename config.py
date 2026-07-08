@@ -1,9 +1,5 @@
 """
-<<<<<<< HEAD
 Configuration — all settings loaded from environment variables.
-=======
-Configuration — all secrets are loaded from environment variables.
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 Copy `.env.example` to `.env` and fill in your keys.
 """
 
@@ -15,7 +11,6 @@ try:
 except ImportError:
     pass
 
-<<<<<<< HEAD
 # API Keys
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 NEWS_API_KEY = os.getenv("NEWS_API_KEY", "")
@@ -43,11 +38,3 @@ INDEX_DIR = os.getenv("INDEX_DIR", "data/index")
 
 # Logging
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-=======
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
-NEWS_API_KEY = os.getenv("NEWS_API_KEY", "")
-YAHOO_FINANCE_API = os.getenv("YAHOO_FINANCE_API", "")
-
-SEC_BASE_URL = "https://www.sec.gov/Archives/"
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c

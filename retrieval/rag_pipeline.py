@@ -1,16 +1,11 @@
 """
 RAG Pipeline Module
 Implements Retrieval-Augmented Generation for financial Q&A.
-<<<<<<< HEAD
 Provides the core FAISS-based pipeline (hand-rolled for full control).
 For LangChain-based orchestration, see langchain_pipeline.py.
 """
 
 import logging
-=======
-"""
-
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 import numpy as np
 import json
 from typing import List, Dict
@@ -18,32 +13,20 @@ from pathlib import Path
 from openai import OpenAI
 from config import OPENAI_API_KEY
 
-<<<<<<< HEAD
 logger = logging.getLogger(__name__)
 
-=======
-# Handle imports with error handling
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 try:
     import faiss
     FAISS_AVAILABLE = True
 except ImportError:
-<<<<<<< HEAD
     logger.warning("faiss not available. Install with: pip install faiss-cpu")
-=======
-    print("Warning: faiss not available. Please install with: pip install faiss-cpu")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     FAISS_AVAILABLE = False
 
 try:
     from embeddings.embedder import FinancialEmbedder
     EMBEDDER_AVAILABLE = True
 except ImportError as e:
-<<<<<<< HEAD
     logger.warning("FinancialEmbedder not available: %s", e)
-=======
-    print(f"Warning: FinancialEmbedder not available: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     EMBEDDER_AVAILABLE = False
     FinancialEmbedder = None
 
@@ -51,11 +34,7 @@ try:
     from retrieval.local_llm import LocalFinancialLLM
     LOCAL_LLM_AVAILABLE = True
 except ImportError as e:
-<<<<<<< HEAD
     logger.warning("LocalFinancialLLM not available: %s", e)
-=======
-    print(f"Warning: LocalFinancialLLM not available: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     LOCAL_LLM_AVAILABLE = False
     LocalFinancialLLM = None
 
@@ -96,11 +75,7 @@ class FinancialRAGPipeline:
             embedded_chunks: List of chunks with embeddings
         """
         if not embedded_chunks:
-<<<<<<< HEAD
             logger.warning("No embedded chunks provided")
-=======
-            print("No embedded chunks provided")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             return
         
         # Extract embeddings
@@ -120,11 +95,7 @@ class FinancialRAGPipeline:
         # Store chunks for reference
         self.chunks = embedded_chunks
         
-<<<<<<< HEAD
         logger.info("Built FAISS index with %d chunks", len(embedded_chunks))
-=======
-        print(f"Built FAISS index with {len(embedded_chunks)} chunks")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     
     def retrieve_relevant_chunks(self, query: str, top_k: int = 5) -> List[Dict]:
         """
@@ -138,11 +109,7 @@ class FinancialRAGPipeline:
             List of relevant chunks with similarity scores
         """
         if self.index is None:
-<<<<<<< HEAD
             logger.warning("Index not built. Call build_index() first.")
-=======
-            print("Index not built. Please call build_index() first.")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             return []
         
         # Generate query embedding
@@ -188,11 +155,7 @@ class FinancialRAGPipeline:
             try:
                 return self._generate_openai_answer(query, context)
             except Exception as e:
-<<<<<<< HEAD
                 logger.warning("OpenAI API error: %s", e)
-=======
-                print(f"OpenAI API error: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
                 # Fall back to local LLM or basic fallback
                 if self.local_llm:
                     return self._generate_local_llm_answer(query, context)
@@ -299,11 +262,7 @@ class FinancialRAGPipeline:
             return response.choices[0].message.content.strip()
             
         except Exception as e:
-<<<<<<< HEAD
             logger.error("Error generating OpenAI answer: %s", e)
-=======
-            print(f"Error generating OpenAI answer: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             return self._generate_fallback_answer(query, context)
     
     def _generate_fallback_answer(self, query: str, context: str) -> str:
@@ -380,30 +339,16 @@ class FinancialRAGPipeline:
             file_path: Path to save the index
         """
         if self.index is None:
-<<<<<<< HEAD
             logger.warning("No index to save")
             return
         
         faiss.write_index(self.index, file_path)
         
-=======
-            print("No index to save")
-            return
-        
-        # Save FAISS index
-        faiss.write_index(self.index, file_path)
-        
-        # Save chunks metadata
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
         chunks_path = file_path.replace('.index', '_chunks.json')
         with open(chunks_path, 'w', encoding='utf-8') as f:
             json.dump(self.chunks, f, indent=2, ensure_ascii=False)
         
-<<<<<<< HEAD
         logger.info("Saved index to %s", file_path)
-=======
-        print(f"Saved index to {file_path}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
     
     def load_index(self, file_path: str):
         """
@@ -413,30 +358,16 @@ class FinancialRAGPipeline:
             file_path: Path to load the index from
         """
         try:
-<<<<<<< HEAD
             self.index = faiss.read_index(file_path)
             
-=======
-            # Load FAISS index
-            self.index = faiss.read_index(file_path)
-            
-            # Load chunks metadata
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
             chunks_path = file_path.replace('.index', '_chunks.json')
             with open(chunks_path, 'r', encoding='utf-8') as f:
                 self.chunks = json.load(f)
             
-<<<<<<< HEAD
             logger.info("Loaded index with %d chunks from %s", len(self.chunks), file_path)
             
         except Exception as e:
             logger.error("Error loading index: %s", e)
-=======
-            print(f"Loaded index with {len(self.chunks)} chunks from {file_path}")
-            
-        except Exception as e:
-            print(f"Error loading index: {e}")
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 
 
 def main():

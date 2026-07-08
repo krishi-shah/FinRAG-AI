@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 jobs:
-<<<<<<< HEAD
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +23,6 @@ jobs:
       - name: Run linter
         run: ruff check .
 
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -40,7 +37,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-<<<<<<< HEAD
       - name: Cache pip packages
         uses: actions/cache@v4
         with:
@@ -55,14 +51,11 @@ jobs:
           key: ${{ runner.os }}-hf-models-v1
           restore-keys: ${{ runner.os }}-hf-models-
 
-=======
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-<<<<<<< HEAD
       - name: Run tests with coverage
         run: pytest tests/ -v --tb=short --cov=. --cov-report=term-missing
 
@@ -104,7 +97,3 @@ jobs:
         with:
           name: evaluation-results
           path: evaluation/results/
-=======
-      - name: Run tests
-        run: pytest tests/ -v --tb=short
->>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
