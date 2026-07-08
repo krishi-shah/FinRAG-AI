@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finrag-ai"
+version = "2.0.0"
+description = "Retrieval-Augmented Generation system for financial Q&A using LangChain, FAISS, and FinBERT"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Krishi Shah", email = "krishi.shah@example.com"},
+]
+keywords = ["rag", "finance", "nlp", "langchain", "faiss", "finbert"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "beautifulsoup4>=4.12,<5",
+    "requests>=2.31,<3",
+    "PyMuPDF>=1.24,<2",
+    "sentence-transformers>=3.0,<4",
+    "faiss-cpu>=1.8,<2",
+    "openai>=1.30,<2",
+    "transformers>=4.40,<5",
+    "streamlit>=1.35,<2",
+    "plotly>=5.22,<6",
+    "pandas>=2.2,<3",
+    "numpy>=1.26,<3",
+    "torch>=2.2,<3",
+    "python-dotenv>=1.0,<2",
+    "langchain>=0.2,<1",
+    "langchain-community>=0.2,<1",
+    "langchain-openai>=0.1,<1",
+    "rank-bm25>=0.2.2,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9",
+    "pytest-cov>=5.0,<6",
+    "ruff>=0.4,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/krishi-shah/FinRAG-AI"
+Repository = "https://github.com/krishi-shah/FinRAG-AI"
+
+[tool.setuptools.packages.find]
+include = ["data_ingestion*", "embeddings*", "retrieval*", "sentiment*", "evaluation*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"

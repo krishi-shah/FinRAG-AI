@@ -1,0 +1,127 @@
+[
+  {
+    "question": "What was Apple's total revenue in fiscal year 2023?",
+    "expected_answer": "Apple's total net revenue for fiscal year 2023 was $383.3 billion, compared to $394.3 billion in fiscal year 2022.",
+    "expected_company": "Apple"
+  },
+  {
+    "question": "How much was Apple's iPhone revenue in fiscal 2023?",
+    "expected_answer": "iPhone revenue was $200.6 billion in fiscal 2023.",
+    "expected_company": "Apple"
+  },
+  {
+    "question": "What was Apple's Services revenue growth?",
+    "expected_answer": "Services revenue was $85.2 billion for fiscal 2023, up 9% from $78.1 billion in fiscal 2022.",
+    "expected_company": "Apple"
+  },
+  {
+    "question": "How many vehicles did Tesla produce in 2023?",
+    "expected_answer": "Tesla produced approximately 1.85 million consumer vehicles in 2023, a 35% increase over 2022.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What were Tesla's total vehicle deliveries in 2023?",
+    "expected_answer": "Tesla's vehicle deliveries totaled 1.81 million units, representing a 38% year-over-year increase.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What was Tesla's automotive revenue?",
+    "expected_answer": "Tesla's automotive revenue was $82.4 billion, an increase of 15% year-over-year.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What was Tesla's gross margin in 2023?",
+    "expected_answer": "Tesla's total GAAP gross margin was 18.2% in 2023, compared to 25.6% in 2022.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "How much did Tesla's energy business generate in revenue?",
+    "expected_answer": "Tesla's energy generation and storage business generated revenue of $6.0 billion in 2023, an increase of 54% compared to 2022.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What was Microsoft Cloud revenue?",
+    "expected_answer": "Microsoft Cloud revenue was $118.5 billion, up 22% year-over-year.",
+    "expected_company": "Microsoft"
+  },
+  {
+    "question": "How fast did Azure grow?",
+    "expected_answer": "Azure and other cloud services revenue grew 29% year-over-year.",
+    "expected_company": "Microsoft"
+  },
+  {
+    "question": "What was Microsoft's Intelligent Cloud segment revenue?",
+    "expected_answer": "Revenue from Intelligent Cloud segment was $87.9 billion, an increase of 17% from fiscal year 2022.",
+    "expected_company": "Microsoft"
+  },
+  {
+    "question": "What was AWS revenue in 2023?",
+    "expected_answer": "Amazon Web Services segment revenue was $90.8 billion in 2023, up 13% year-over-year.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "What was Amazon's total net sales in 2023?",
+    "expected_answer": "Amazon's net sales increased 12% to $574.8 billion in 2023, compared with $514.0 billion in 2022.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "How much was AWS operating income?",
+    "expected_answer": "AWS operating income was $24.6 billion compared to $22.8 billion in 2022.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "What was Amazon's operating cash flow?",
+    "expected_answer": "Operating cash flow increased 82% to $84.9 billion, compared with $46.7 billion in 2022.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "What was Amazon's free cash flow in 2023?",
+    "expected_answer": "Free cash flow improved to $36.8 billion, compared with negative $11.6 billion in 2022.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "What was the federal funds rate in Q4 2023?",
+    "expected_answer": "The Federal Reserve maintained the federal funds rate in the target range of 5.25% to 5.50% through Q4 2023.",
+    "expected_company": "Federal Reserve"
+  },
+  {
+    "question": "How many rate increases did the Fed make since March 2022?",
+    "expected_answer": "The Federal Reserve made 11 rate increases since March 2022 totaling 525 basis points.",
+    "expected_company": "Federal Reserve"
+  },
+  {
+    "question": "What drove the decrease in Apple's total revenue?",
+    "expected_answer": "The decrease was driven primarily by lower iPhone revenue, partially offset by growth in Services.",
+    "expected_company": "Apple"
+  },
+  {
+    "question": "What was Apple's Mac revenue?",
+    "expected_answer": "Mac revenue was $29.4 billion in fiscal 2023.",
+    "expected_company": "Apple"
+  },
+  {
+    "question": "How much energy storage did Tesla deploy in 2023?",
+    "expected_answer": "Energy storage deployments reached 14.7 GWh in 2023, more than double the 6.5 GWh deployed in 2022.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What caused Tesla's gross margin decline?",
+    "expected_answer": "The decrease in gross margin was primarily due to reduced average selling prices of vehicles, partially offset by lower raw material costs.",
+    "expected_company": "Tesla"
+  },
+  {
+    "question": "What drove Microsoft Azure growth?",
+    "expected_answer": "Azure growth was driven by consumption-based services and per-user services including Microsoft 365.",
+    "expected_company": "Microsoft"
+  },
+  {
+    "question": "What was Amazon's North America segment sales?",
+    "expected_answer": "North America segment sales were $352.8 billion, up 12%.",
+    "expected_company": "Amazon"
+  },
+  {
+    "question": "What improved Amazon's free cash flow?",
+    "expected_answer": "Free cash flow improvement was driven by increased operating income and efficient capital expenditure management.",
+    "expected_company": "Amazon"
+  }
+]
