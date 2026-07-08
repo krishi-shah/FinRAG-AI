@@ -1,10 +1,17 @@
 beautifulsoup4>=4.12,<5
 requests>=2.31,<3
+<<<<<<< HEAD
 PyMuPDF>=1.24,<2
+=======
+newspaper3k>=0.2.8,<1
+PyMuPDF>=1.24,<2
+nltk>=3.8,<4
+>>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
 sentence-transformers>=3.0,<4
 faiss-cpu>=1.8,<2
 openai>=1.30,<2
 transformers>=4.40,<5
+<<<<<<< HEAD
 streamlit>=1.35,<2
 plotly>=5.22,<6
 pandas>=2.2,<3
@@ -18,3 +25,13 @@ rank-bm25>=0.2.2,<1
 pytest>=8.0,<9
 pytest-cov>=5.0,<6
 ruff>=0.4,<1
+=======
+scikit-learn>=1.4,<2
+streamlit>=1.35,<2
+plotly>=5.22,<6
+pandas>=2.2,<3
+numpy>=2.0,<3
+torch>=2.2,<3
+python-dotenv>=1.0,<2
+pytest>=8.0,<9
+>>>>>>> 7d7bc625fee4bf9d4c70c4ee0ef89f65a02aa30c
